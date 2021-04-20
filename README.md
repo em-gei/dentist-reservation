@@ -1,0 +1,1 @@
+1. Express typescript server creation. It executes moving in express-server folder and running "npm start" command.

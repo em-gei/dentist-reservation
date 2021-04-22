@@ -1,3 +1,5 @@
+# Dentist Reservation App
+
 - Express typescript server creation. Run it moving in express-server folder and executes "npm start" command.
 - Angular client creation. Run it moving in angular-client folder and executes "npm start" command.
 - Dockerize Angular app.
@@ -8,7 +10,7 @@
     Run: docker run --rm -d --name express-server-container -p 3000:3000 express-server
 - Docker compose application. Run together angular client, express server and mongodb.
 
-Executions modes:
+## Executions modes:
 1. Run each component indipendently:
     - Run angular application from angular-client folder with command: "npm start"
     - Run mongodb (locally or in a docker container exposing communication port)

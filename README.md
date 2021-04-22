@@ -1,10 +1,19 @@
-1. Express typescript server creation. Run it moving in express-server folder and executes "npm start" command.
-2. Angular client creation. Run it moving in angular-client folder and executes "npm start" command.
-3. Dockerize Angular app.
+- Express typescript server creation. Run it moving in express-server folder and executes "npm start" command.
+- Angular client creation. Run it moving in angular-client folder and executes "npm start" command.
+- Dockerize Angular app.
     Build: docker build -t angular-client .
     Run: docker run --rm -d --name angular-client-container -p 4200:4200  angular-client
-4. Dockerize Express server.
+- Dockerize Express server.
     Build: docker build -t express-server .
     Run: docker run --rm -d --name express-server-container -p 3000:3000 express-server
+- Docker compose application. Run together angular client, express server and mongodb.
 
-TODO - Add binding between client and server.
+Executions modes:
+1. Run each component indipendently:
+    - Run angular application from angular-client folder with command: "npm start"
+    - Run mongodb (locally or in a docker container exposing communication port)
+    - Run express server from express-server folder with command: "npm start" (nb. set mongodb url in api-routes.ts)
+
+2. Run all together:
+    - In the root folder run "docker-compose build" and after "docker-compose up"
+

@@ -1,0 +1,41 @@
+.title {
+  color: #ffffff;
+  font-size: 18px;
+  z-index: 1000;
+  white-space: nowrap;
+}
+
+.spacer {
+    flex: 1 1 auto;
+  }
+
+a {
+  margin: 10px;
+  text-decoration: none;
+  color: #e3e3e3a1;
+  cursor: pointer;
+}
+
+.active-link {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+a:last-child {
+  margin-right: 0px;
+}
+
+.base-color {
+  background-color: #064c8d;
+  color: #ffffff;
+}
+
+.mat-toolbar {
+  color: #ffffff;  
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+  background: #064c8d;
+  font-size: 18px;
+  box-shadow: 0px 0px 1px #ffffff;
+}

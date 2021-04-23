@@ -1,0 +1,25 @@
+.container {
+  display: flex;
+  box-sizing: border-box;
+  height: 100%;
+}
+
+.welcome_message {
+  margin: 0px auto;
+  align-self: center;
+  border: 3px solid green;
+  width: 50%;
+  padding: 20px 0;
+}
+
+.welcome_message h2 {
+  text-align: center;
+}
+
+  
+
+.welcome_message img {
+  width: 220px;
+  margin: 0px auto;
+  display: block;
+}

@@ -6,7 +6,8 @@ import { registry, appointments, operations } from "./schema";
 const router = express.Router();
 
 // Get database URL from docker-compose
-const dbHost = "mongodb://mongodb/dentist-reservation";
+const dbHost = "mongodb://localhost:27017/dentist-reservation"; // use this when run server and database separately
+// const dbHost = "mongodb://mongodb/dentist-reservation"; // use this when running docker-compose
 // Connect to DB
 mongoose.connect(dbHost);
 const registrySchema = new mongoose.Schema(registry);
@@ -33,7 +34,7 @@ router.get("/registry", (req: Request, res: Response) => {
   });
 });
 
-// Find in registry
+// GET - Find in registry
 router.get("/registry/:id", (req: Request, res: Response) => {
   Registry.findById(req.params["id"], (err: any, registry: any) => {
     if (err) res.status(500).send(err);
@@ -42,22 +43,30 @@ router.get("/registry/:id", (req: Request, res: Response) => {
   });
 });
 
-// Create a registry entry
-router.post("/registry", (req: Request, res: Response) => {
+// POST Create a registry entry
+router.post("/registry", async (req: Request, res: Response) => {
   let registry = new Registry({
     name: req.body.name,
     surname: req.body.surname,
     birthday: req.body.birthday,
     email: req.body.email,
   });
-
-  registry.save((error: any) => {
-    if (error) res.status(500).send(error);
-
-    res.status(201).json({
-      message: "Entry created successfully",
+  let isAlready = await Registry.find({name: req.body.name, surname: req.body.surname, birthday: req.body.birthday, email: req.body.email}).exec();
+  if (isAlready.length > 0) {
+    res.status(403).json({
+      status: 403,
+      message: "User already exists"
     });
-  });
+  } else {
+    registry.save((error: any) => {
+      if (error) res.status(500).send(error);
+  
+      res.status(201).json({
+        status: 201,
+        message: "User created successfully",
+      });
+    });
+  }
 });
 
 // DELETE

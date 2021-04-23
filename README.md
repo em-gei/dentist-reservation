@@ -5,9 +5,11 @@
 - Dockerize Angular app.
     Build: docker build -t angular-client .
     Run: docker run --rm -d --name angular-client-container -p 4200:4200  angular-client
-- Dockerize Express server.
+- Dockerize Express server (to debug locally run "npm start" and add an "Attack by process ID" in VS).
     Build: docker build -t express-server .
     Run: docker run --rm -d --name express-server-container -p 3000:3000 express-server
+- Dockerize Mongodb:
+    Run: docker run --rm -d --name mongodb -p 27017:27017 mongo
 - Docker compose application. Run together angular client, express server and mongodb.
 
 ## Executions modes:

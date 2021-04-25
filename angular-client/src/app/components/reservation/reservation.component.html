@@ -1,1 +1,51 @@
-<p>reservation works!</p>
+<div class="container">
+  <form  #reservationForm="ngForm" id="reservationForm" class="form_container" (ngSubmit)="reserveDate()">
+    <div class="input_container">
+      <mat-form-field>
+        <mat-label>Choose a user</mat-label>
+        <mat-select [(ngModel)]="fiscalCode" name="fiscalCode" required>
+          <mat-option
+            *ngFor="let registry of registryList"
+            [value]="registry.fiscalCode">
+            {{ registry.fiscalCode }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div class="input_container">
+      <mat-form-field>
+        <mat-label>Choose a date</mat-label>
+        <input
+          matInput
+          [min]="minDate"
+          [matDatepicker]="picker"
+          [(ngModel)]="pickedDate"
+          name="pickedDate"
+          (dateChange)="onDateChange($event)"
+          required
+        />
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+    </div>
+
+    <div class="input_container">
+      <mat-form-field>
+        <mat-label>Select an hour interval</mat-label>
+        <mat-select [(ngModel)]="interval" name="interval" multiple required>
+          <mat-option
+            *ngFor="let timetable of timetableList"
+            [value]="timetable.interval"
+          >
+            {{ timetable.interval }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <button class="form_button" mat-raised-button color="primary" type="submit" [disabled]="!reservationForm.valid">
+      Reserve the date
+    </button>
+  </form>
+</div>

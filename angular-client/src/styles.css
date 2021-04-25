@@ -18,3 +18,30 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .snackbar_error button{
     color: white;
 }
+
+.container {
+    display: flex;
+    box-sizing: border-box;
+    height: 100%;
+}
+
+.form_container {
+    margin: 0px auto;
+    align-self: center;
+    border: 3px solid green;
+    width: 50%;
+    padding: 20px 0;
+}
+
+.input_container {
+    max-width: 300px;
+    margin: 0px auto
+}
+
+.mat-form-field {
+    width: 100%;
+}
+
+.mat-menu-panel {
+    background-color: #064c8d;
+}

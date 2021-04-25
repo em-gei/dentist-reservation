@@ -21,3 +21,8 @@ services:
     image: mongo # specify image to build container from
     ports:
       - "27017:27017" # specify port forewarding
+
+  mongo_seed:
+    build: mongo_seed
+    links:
+      - mongodb

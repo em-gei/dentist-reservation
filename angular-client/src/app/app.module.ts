@@ -15,6 +15,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
+import { MatSelectModule } from '@angular/material/select';
 
 // App modules
 import { AppRoutingModule } from './app-routing.module';
@@ -53,6 +54,7 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatNativeDateModule,
     MatMomentDateModule,
     MatSnackBarModule,
+    MatSelectModule
   ],
   providers: [
     MatDatepickerModule,

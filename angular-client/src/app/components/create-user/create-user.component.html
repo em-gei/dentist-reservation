@@ -8,7 +8,7 @@
     </div>
 
     <div class="input_container">
-      <mat-form-field class="example-full-width">
+      <mat-form-field>
         <mat-label>Surname</mat-label>
         <input
           matInput
@@ -17,8 +17,21 @@
         />
       </mat-form-field>
     </div>
+
     <div class="input_container">
-      <mat-form-field appearance="fill">
+      <mat-form-field>
+        <mat-label>Fiscal code</mat-label>
+        <input
+          matInput
+          placeholder="Fiscal code"
+          formControlName="fiscalCodeFormControl"
+          [pattern]="cfRegex"
+        />
+      </mat-form-field>
+    </div>
+
+    <div class="input_container">
+      <mat-form-field>
         <mat-label>Birthday</mat-label>
         <input
           matInput
@@ -30,6 +43,7 @@
         <mat-datepicker #dp></mat-datepicker>
       </mat-form-field>
     </div>
+    
     <div class="input_container">
       <mat-form-field>
         <mat-label>Email</mat-label>
@@ -37,7 +51,6 @@
           type="email"
           matInput
           formControlName="emailFormControl"
-          [errorStateMatcher]="matcher"
           placeholder="test@example.com"
         />
         <mat-error
@@ -53,6 +66,7 @@
         </mat-error>
       </mat-form-field>
   </div>
+  
   <button class="form_button" mat-raised-button color="primary" type="submit">Save it!</button>
 </form>
 </div>

@@ -2,18 +2,17 @@
 export const registry = {
     name: String,
     surname: String,
+    fiscalCode: String,
     birthday: Date,
     email: String
 };
 export const appointments = {
     date: Date,
-    site: String,
-    registryId: Number,
-    operationId: Number
+    fiscalCode: String,
+    interval: String
 };
-export const operations = {
-    desc: String,
-    code: String,
-    price: Number,
-    duration: Number
+
+export const timetables = {
+    position: Number,
+    interval: String
 };

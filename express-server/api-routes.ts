@@ -6,10 +6,11 @@ import { registry, appointments, timetables } from "./schema";
 const router = express.Router();
 
 // Get database URL from docker-compose
-// const dbHost = "mongodb://localhost:27017/dentist-reservation"; // use this when run server and database separately
-const dbHost = "mongodb://mongodb/dentist-reservation"; // use this when running docker-compose
+const dbHost = "mongodb://localhost:27017/dentist-reservation"; // use this when run server and database separately
+// const dbHost = "mongodb://mongodb/dentist-reservation"; // use this when running docker-compose
 // Connect to DB
 mongoose.connect(dbHost);
+mongoose.set('useFindAndModify', false); // Make Mongoose use `findOneAndUpdate()`, this option is `true` by default, need to set it to false.
 const registrySchema = new mongoose.Schema(registry);
 const appointmentsSchema = new mongoose.Schema(appointments);
 const timetablesSchema = new mongoose.Schema(timetables);
@@ -105,9 +106,24 @@ router.delete("/registry/:id", (req: Request, res: Response) => {
     (err: any, doc: any, resp: any) => {
       if (err) res.status(500).send(err);
 
-      res.status(200);
+      res.status(200).json({
+        status: 200,
+        message: "User succesfully deleted"
+      });
     }
   );
+});
+
+// PUT
+router.put("/registry/:id", (req: Request, res: Response) => {
+  Registry.findByIdAndUpdate(req.params['id'], req.body, (err: any, doc:any, resp: any) => {
+    if (err) res.status(500).send(err);
+
+    res.status(200).json({
+      status: 200,
+      message: "User succesfully modified!"
+    });
+  });
 });
 // ********************************************
 
@@ -153,6 +169,34 @@ router.post("/appointments", async (req: Request, res: Response) => {
     sendError(res, "Fields not valid");
   }
  
+});
+
+// DELETE
+router.delete("/appointments/:id", (req: Request, res: Response) => {
+  Appointments.findByIdAndDelete(
+    req.params["id"],
+    null,
+    (err: any, doc: any, resp: any) => {
+      if (err) res.status(500).send(err);
+
+      res.status(200).json({
+        status: 200,
+        message: "Appointments succesfully deleted"
+      });
+    }
+  );
+});
+
+// PUT
+router.put("/appointments/:id", (req: Request, res: Response) => {
+  Appointments.findByIdAndUpdate(req.params['id'], req.body, (err: any, doc:any, resp: any) => {
+    if (err) res.status(500).send(err);
+
+    res.status(200).json({
+      status: 200,
+      message: "Appointments succesfully modified!"
+    });
+  });
 });
 
 // ********************************************
